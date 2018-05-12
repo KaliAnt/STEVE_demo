@@ -2450,6 +2450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joyStick: {fileID: 1918815572}
   rotateStick: {fileID: 1215514803}
+  minion: {fileID: 1594931692403224, guid: 8e0696778f70cb04dac495e637f1f487, type: 2}
+  maxNrOfMinions: 10
+  currentNrOfMinions: 0
+  minionSpawnForce: 10
   speed: 10
 --- !u!50 &2071855337
 Rigidbody2D:

@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour {
     private Transform transform;
     public Joystick joyStick;
     public Joystick rotateStick;
+    public GameObject minion;
+    public int maxNrOfMinions;
+    public int currentNrOfMinions;
+    public int minionSpawnForce;
     public float speed;
 
 
@@ -14,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         transform = GetComponent<Transform>();
         rigidBody = GetComponent<Rigidbody2D>();
+        currentNrOfMinions = 0;
     }
 	
 	// Update is called once per frame
@@ -33,6 +38,15 @@ public class PlayerController : MonoBehaviour {
 
 
         RotatePlayer();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if(currentNrOfMinions < maxNrOfMinions)
+            {
+                spawnMinion();
+            }   
+            
+        }
     }
 
     private void RotatePlayer()
@@ -48,5 +62,25 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, (float)angle);
         }
 
+    }
+
+    private void spawnMinion()
+    {
+        GameObject instance = (GameObject)Instantiate(minion);
+        SpriteRenderer minionRenderer = instance.GetComponent<SpriteRenderer>();
+        SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        minionRenderer.color = playerRenderer.color;
+        instance.transform.position = transform.position;
+
+        Rigidbody2D minionBody = instance.GetComponent<Rigidbody2D>();
+
+        float angle = Random.value * 360 * Mathf.Deg2Rad;
+        float forceX, forceY;
+        forceX = minionSpawnForce * Mathf.Sin(angle);
+        forceY = minionSpawnForce * Mathf.Cos(angle);
+
+        minionBody.velocity = new Vector3(forceX, forceY);
+        currentNrOfMinions++;
     }
 }
