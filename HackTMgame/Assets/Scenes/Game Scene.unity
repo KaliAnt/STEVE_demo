@@ -1750,7 +1750,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2071855335}
-  cameraSmooth: 1000
+  cameraSmooth: 100
+  maxDist: 2
 --- !u!1 &1518409996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,10 +2403,6 @@ MonoBehaviour:
   joyStick: {fileID: 1918815572}
   rotateStick: {fileID: 1215514803}
   speed: 10
-  X: 0
-  Y: 0
-  angle: 0
-  Z: 0
 --- !u!50 &2071855337
 Rigidbody2D:
   serializedVersion: 4
