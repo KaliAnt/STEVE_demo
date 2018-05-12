@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour {
     public GameObject RotateJoystick;
     public Button PauseBttn;
 	public GameObject panel_;
+	public GameObject panelOptions_;
+	public GameObject panelUpgrade_;
 	public Color colorPaused_;
 	public Color colorActive_;
 
@@ -26,6 +28,8 @@ public class Pause : MonoBehaviour {
         if(isPaused)
         {
 			panel_.SetActive (false);
+			panelUpgrade_.SetActive (false);
+			panelOptions_.SetActive (false);
 			PauseBttn.image.color = colorActive_;
             Time.timeScale = 1;
             isPaused = false;

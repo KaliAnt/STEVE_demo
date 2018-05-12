@@ -184,7 +184,6 @@ MonoBehaviour:
   currentCapacity: 0
   capacityBar: {fileID: 114580759937635604}
   bar: {fileID: 114729052985786258}
-  canvas: {fileID: 223485887680065490}
 --- !u!114 &114580759937635604
 MonoBehaviour:
   m_ObjectHideFlags: 1
