@@ -13,6 +13,7 @@ public class ResourceController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
         maxCapacity = 200;
         bar.enabled = false;
         currentCapacity = maxCapacity;
@@ -45,4 +46,6 @@ public class ResourceController : MonoBehaviour {
         capacityBar.fillAmount = (maxCapacity - currentCapacity) / maxCapacity ; 
         return minedQuantity;
     }
+
+
 }
