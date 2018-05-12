@@ -14,7 +14,6 @@ public class NewGame : MonoBehaviour {
 	
 	void TaskOnClick()
 	{
-		Debug.Log ("Hello");
 		Application.LoadLevel ("Game Scene");
 	}	
 }

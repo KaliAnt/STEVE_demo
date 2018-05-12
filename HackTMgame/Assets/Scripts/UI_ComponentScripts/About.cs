@@ -7,6 +7,8 @@ public class About : MonoBehaviour {
 
 	public Button about_;
 	public GameObject panel_;
+	Transform transform;
+	GameObject child_;
 	void Start ()
 	{
 		Button myBtn = about_.GetComponent<Button>();
@@ -15,6 +17,6 @@ public class About : MonoBehaviour {
 
 	void TaskOnClick()
 	{
-		panel_.SetActive (true);			
+		panel_.SetActive (true);
 	}
 }
