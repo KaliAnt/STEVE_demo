@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public GameObject player;
-    public float cameraSmooth;
+    public float maxDist;
 
 
     // Use this for initialization
@@ -18,6 +18,26 @@ public class CameraController : MonoBehaviour {
     void Update()
     {
         Vector3 newPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, newPosition, cameraSmooth);
+        float distance = Vector3.Distance(newPosition, transform.position);
+
+        if(distance > maxDist)
+        {
+            float absX, absY;
+            float currentX, currentY;
+            float delta = distance - maxDist;
+            float newX, newY;
+
+            currentX = transform.position.x;
+            currentY = transform.position.y;
+
+            absX = player.transform.position.x - currentX;
+            absY = player.transform.position.y - currentY;
+
+            newX = delta * absX / distance;
+            newY = delta * absY / distance;
+
+            transform.position = new Vector3(transform.position.x + newX, transform.position.y + newY, transform.position.z);
+        }
+        
     }
 }
