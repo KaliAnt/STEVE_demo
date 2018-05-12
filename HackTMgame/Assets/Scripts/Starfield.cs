@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Starfield : MonoBehaviour {
 
-    public int maxStars = 1000;
-    public int universeSize = 10;
+    public int maxStars = 10000;
+    public int universeSize = 100;
 
     private ParticleSystem.Particle[] points;
 
@@ -19,7 +19,7 @@ public class Starfield : MonoBehaviour {
         for (int i = 0; i < maxStars; i++)
         {
             points[i].position = Random.insideUnitSphere * universeSize;
-            points[i].startSize = Random.Range(0.05f, 0.05f);
+            points[i].startSize = Random.Range(0.05f, 0.7f);
             points[i].startColor = new Color(1, 1, 1, 1);
         }
 
