@@ -15,13 +15,13 @@ public class MinionScript : MonoBehaviour {
 
 
     private float minedQuantity;
-    private float radius = 2;
+    private float radius;
     private float offsetX, offsetY;
 	// Use this for initialization
 	void Start () {
         minionBody = GetComponent<Rigidbody2D>();
-        speed = 0.5f;
         minedQuantity = 0f;
+        radius = transform.localScale.x + transform.localScale.y;
 
         destinationAquired = false;
         offsetX = Random.value * radius * 2 - radius;
@@ -38,7 +38,7 @@ public class MinionScript : MonoBehaviour {
                 Vector3 destination = new Vector3(target.transform.position.x + offsetX, target.transform.position.y + offsetY);
                 if (transform.position != destination)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, destination, 0.5f);
+                    transform.position = Vector3.MoveTowards(transform.position, destination, speed);
                 }
                 else
                 {
@@ -54,7 +54,7 @@ public class MinionScript : MonoBehaviour {
                     Vector3 home = new Vector3(ownerPlayer.transform.position.x, ownerPlayer.transform.position.y);
                     if (transform.position != home)
                     {
-                        transform.position = Vector3.MoveTowards(transform.position, home, 0.5f);
+                        transform.position = Vector3.MoveTowards(transform.position, home, speed);
                     }
                     else
                     {

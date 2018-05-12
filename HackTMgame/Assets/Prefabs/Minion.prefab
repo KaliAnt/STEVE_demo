@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1234964981866370}
+  m_RootGameObject: {fileID: 1353870480679918}
   m_IsPrefabParent: 1
---- !u!1 &1234964981866370
+--- !u!1 &1353870480679918
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4586524180329474}
-  - component: {fileID: 212071899981131898}
-  - component: {fileID: 50317701142884708}
-  - component: {fileID: 114842805147252148}
-  - component: {fileID: 58834186241072124}
+  - component: {fileID: 4091395799085068}
+  - component: {fileID: 212365316722755998}
+  - component: {fileID: 50435709072733336}
+  - component: {fileID: 114777855079086322}
+  - component: {fileID: 58031851067008310}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Untagged
@@ -30,26 +30,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4586524180329474
+--- !u!4 &4091395799085068
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234964981866370}
+  m_GameObject: {fileID: 1353870480679918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4288898, y: -2.4269333, z: 0}
+  m_LocalPosition: {x: -4.921969, y: -2.9774573, z: 0}
   m_LocalScale: {x: 0.47834477, y: 0.4484586, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50317701142884708
+--- !u!50 &50435709072733336
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234964981866370}
+  m_GameObject: {fileID: 1353870480679918}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,12 +63,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58834186241072124
+--- !u!58 &58031851067008310
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234964981866370}
+  m_GameObject: {fileID: 1353870480679918}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -78,30 +78,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.56
---- !u!114 &114842805147252148
+--- !u!114 &114777855079086322
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234964981866370}
+  m_GameObject: {fileID: 1353870480679918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34831922c26f3194abae3e88c3ef1fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownerPlayer: {fileID: 0}
-  speed: 20
+  speed: 0.5
   resourceLayer:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
   miningPower: 0.1
---- !u!212 &212071899981131898
+--- !u!212 &212365316722755998
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234964981866370}
+  m_GameObject: {fileID: 1353870480679918}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
