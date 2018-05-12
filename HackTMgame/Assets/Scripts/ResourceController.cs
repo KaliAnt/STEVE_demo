@@ -8,11 +8,13 @@ public class ResourceController : MonoBehaviour {
     public float maxCapacity;
     public float currentCapacity;
     public Image capacityBar;
+    public Image bar;
 
 	// Use this for initialization
 	void Start () {
 
         maxCapacity = 200;
+        bar.enabled = false;
         currentCapacity = maxCapacity;
         capacityBar.fillAmount = 0;
 	}
@@ -39,6 +41,7 @@ public class ResourceController : MonoBehaviour {
             currentCapacity -= minePower;
         }
 
+        bar.enabled = true;
         capacityBar.fillAmount = (maxCapacity - currentCapacity) / maxCapacity ; 
         return minedQuantity;
     }
