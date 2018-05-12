@@ -9,10 +9,6 @@ public class PlayerController : MonoBehaviour {
     public Joystick rotateStick;
     public float speed;
 
-    public float X;
-    public float Y;
-    public double angle;
-    public double Z;
 
     // Use this for initialization
     void Start () {
@@ -43,15 +39,13 @@ public class PlayerController : MonoBehaviour {
     {
         float movementX = rotateStick.Horizontal;
         float movementY = rotateStick.Vertical;
-
-        X = movementX;
-        Y = movementY;
+        double angle;
 
 
         if(movementY != 0 || movementX != 0)
         {
-            angle = System.Math.Asin(movementX / movementY);
-
+            angle = Mathf.Atan2(movementX, movementY) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, (float)angle);
         }
     }
 }
