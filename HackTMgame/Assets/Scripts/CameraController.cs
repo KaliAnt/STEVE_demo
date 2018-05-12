@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour {
 
     public GameObject player;
     public float maxDist;
-
+    public float cameraLerp;
 
     // Use this for initialization
     void Start()
@@ -20,7 +20,8 @@ public class CameraController : MonoBehaviour {
         Vector3 newPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         float distance = Vector3.Distance(newPosition, transform.position);
 
-        if(distance > maxDist)
+
+        if (distance > maxDist)
         {
             float absX, absY;
             float currentX, currentY;
@@ -39,5 +40,14 @@ public class CameraController : MonoBehaviour {
             transform.position = new Vector3(transform.position.x + newX, transform.position.y + newY, transform.position.z);
         }
         
+        if(distance <= maxDist)
+        {
+            transform.position = Vector3.Lerp(transform.position, newPosition, cameraLerp);
+        }
+
+        
+        
     }
+
+
 }

@@ -47,5 +47,6 @@ public class PlayerController : MonoBehaviour {
             angle = Mathf.Atan2(movementX, movementY) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, (float)angle);
         }
+
     }
 }

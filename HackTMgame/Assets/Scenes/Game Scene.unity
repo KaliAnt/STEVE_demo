@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2071855335}
   maxDist: 2
+  cameraLerp: 0.05
 --- !u!1 &1518409996
 GameObject:
   m_ObjectHideFlags: 0
