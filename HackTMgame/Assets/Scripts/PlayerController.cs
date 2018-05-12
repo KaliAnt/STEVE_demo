@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour {
     public int minionSpawnForce;
     public float speed;
 
+    public float resources;
+
 
     // Use this for initialization
     void Start () {
         transform = GetComponent<Transform>();
         rigidBody = GetComponent<Rigidbody2D>();
         currentNrOfMinions = 0;
+        resources = 0;
     }
 	
 	// Update is called once per frame
@@ -36,17 +39,29 @@ public class PlayerController : MonoBehaviour {
             rigidBody.velocity = Vector2.zero;
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null)
+            {
+                if(hit.collider.gameObject.tag == "Resource")
+                {
+                    spawnMinion(hit.collider.gameObject);
+                }
+            }
+        }
+
 
         RotatePlayer();
+    }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if(currentNrOfMinions < maxNrOfMinions)
-            {
-                spawnMinion();
-            }   
-            
-        }
+    public void minionReturn(float minedResource)
+    {
+        resources += minedResource;
+        currentNrOfMinions--;
     }
 
     private void RotatePlayer()
@@ -64,23 +79,29 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private void spawnMinion()
+    public void spawnMinion(GameObject target)
     {
-        GameObject instance = (GameObject)Instantiate(minion);
-        SpriteRenderer minionRenderer = instance.GetComponent<SpriteRenderer>();
-        SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
+        if(currentNrOfMinions < maxNrOfMinions) { 
+            GameObject instance = (GameObject)Instantiate(minion);
+            currentNrOfMinions++;
+            SpriteRenderer minionRenderer = instance.GetComponent<SpriteRenderer>();
+            SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        minionRenderer.color = playerRenderer.color;
-        instance.transform.position = transform.position;
+            minionRenderer.color = playerRenderer.color;
+            instance.transform.position = transform.position;
 
-        Rigidbody2D minionBody = instance.GetComponent<Rigidbody2D>();
+            Rigidbody2D minionBody = instance.GetComponent<Rigidbody2D>();
 
-        float angle = Random.value * 360 * Mathf.Deg2Rad;
-        float forceX, forceY;
-        forceX = minionSpawnForce * Mathf.Sin(angle);
-        forceY = minionSpawnForce * Mathf.Cos(angle);
+            float angle = Random.value * 360 * Mathf.Deg2Rad;
+            float forceX, forceY;
+            forceX = minionSpawnForce * Mathf.Sin(angle);
+            forceY = minionSpawnForce * Mathf.Cos(angle);
 
-        minionBody.velocity = new Vector3(forceX, forceY);
-        currentNrOfMinions++;
+            minionBody.velocity = new Vector3(forceX, forceY);
+
+            MinionScript minionScript = instance.GetComponent<MinionScript>();
+            minionScript.ownerPlayer = gameObject;
+            minionScript.target = target;
+        }
     }
 }
