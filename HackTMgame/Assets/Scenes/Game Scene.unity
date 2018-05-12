@@ -2380,10 +2380,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   res: {fileID: 1985132144642956, guid: 7f00e09c82863d5488e21e9ab84091df, type: 2}
   pink: {r: 1, g: 0, b: 1, a: 1}
-  mapWidth: 100
-  mapHeight: 100
+  mapWidth: 80
+  mapHeight: 80
   spawnRate: 20
   rarity: 2
+  planet: {fileID: 1869997088016970, guid: 0a8cecd2cd098024094f17a082be967a, type: 2}
 --- !u!4 &1307687637
 Transform:
   m_ObjectHideFlags: 0
