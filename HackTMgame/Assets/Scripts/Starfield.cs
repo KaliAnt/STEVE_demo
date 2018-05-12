@@ -19,7 +19,7 @@ public class Starfield : MonoBehaviour {
         for (int i = 0; i < maxStars; i++)
         {
             points[i].position = Random.insideUnitSphere * universeSize;
-            points[i].startSize = Random.Range(0.05f, 0.7f);
+            points[i].startSize = Random.Range(0.05f, 0.3f);
             points[i].startColor = new Color(1, 1, 1, 1);
         }
 
