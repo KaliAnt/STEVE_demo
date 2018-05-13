@@ -7,14 +7,16 @@ public class MapGeneration : MonoBehaviour {
 
     public GameObject player;
     public GameObject res;
+    public GameObject cometpref;
     public Color pink;
     public float mapWidth;
     public float mapHeight;
     public float spawnRate;
     public float rarity;
+    public float cometSpeed;
 
     public GameObject planet;
-
+    public GameObject comet;
 
     private float planetSpawnRate = 10;
     
@@ -23,6 +25,9 @@ public class MapGeneration : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //FF00FF pink
+        comet = (GameObject)Instantiate(cometpref);
+        comet.transform.position = new Vector3(-mapWidth, mapHeight);
+        comet.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, -45.0f);
 
         //GameObject instance = (GameObject)Instantiate(res);
         SpriteRenderer resPink = res.transform.GetComponentInChildren<SpriteRenderer>();
@@ -61,6 +66,6 @@ public class MapGeneration : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
+        comet.transform.position = Vector3.MoveTowards(comet.transform.position, new Vector3(mapWidth, -mapHeight), cometSpeed);
 	}
 }

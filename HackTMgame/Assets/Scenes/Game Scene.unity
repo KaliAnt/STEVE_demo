@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2378,13 +2378,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e1df8763d9ec429905540ecde05ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2071855335}
   res: {fileID: 1985132144642956, guid: 7f00e09c82863d5488e21e9ab84091df, type: 2}
+  cometpref: {fileID: 1143140431846136, guid: 94c58624e69b64642a3cb53de33d422a, type: 2}
   pink: {r: 1, g: 0, b: 1, a: 1}
   mapWidth: 80
   mapHeight: 80
   spawnRate: 20
   rarity: 2
+  cometSpeed: 0.2
   planet: {fileID: 1869997088016970, guid: 0a8cecd2cd098024094f17a082be967a, type: 2}
+  comet: {fileID: 1143140431846136, guid: 94c58624e69b64642a3cb53de33d422a, type: 2}
 --- !u!4 &1307687637
 Transform:
   m_ObjectHideFlags: 0
@@ -3723,7 +3727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joyStick: {fileID: 1918815572}
   rotateStick: {fileID: 1215514803}
-  minion: {fileID: 1234964981866370, guid: 8e0696778f70cb04dac495e637f1f487, type: 2}
+  minion: {fileID: 1353870480679918, guid: 8e0696778f70cb04dac495e637f1f487, type: 2}
   maxNrOfMinions: 10
   currentNrOfMinions: 0
   minionSpawnForce: 10
