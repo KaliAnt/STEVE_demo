@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidBody;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     public float speed;
 
     public float resources;
+	public Text text;
 
 
     // Use this for initialization
@@ -60,7 +62,8 @@ public class PlayerController : MonoBehaviour {
 
     public void minionReturn(float minedResource)
     {
-        resources += minedResource;
+        resources += minedResource * 100;
+		text.text =(int) resources + "#";
         currentNrOfMinions--;
     }
 
