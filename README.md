@@ -1,4 +1,4 @@
-# S.T.E.V.E. - Space Travel of the Extraordinary Valiant Explorer
+# S.T.E.V.E. - Space Travel with the Extraordinary Valiant Explorer
 Android game made in Unity.
 
 ### General idea
