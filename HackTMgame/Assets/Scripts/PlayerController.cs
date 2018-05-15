@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidBody;
     private Transform transform;
-    public Joystick joyStick;
-    public Joystick rotateStick;
     public GameObject minion;
     public int maxNrOfMinions;
     public int currentNrOfMinions;
@@ -17,6 +15,10 @@ public class PlayerController : MonoBehaviour {
     public float resources;
 	public Text text;
 
+    private float rotationOffset;
+    private List<Transform> hiddenEyes;
+    private List<Transform> visibleEyes;
+
 
     // Use this for initialization
     void Start () {
@@ -24,13 +26,51 @@ public class PlayerController : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody2D>();
         currentNrOfMinions = 0;
         resources = 0;
+        rotationOffset = -110.0f;
+        hideAllEyes();
+        showAnEye();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        float movementX = joyStick.Horizontal;
-        float movementY = joyStick.Vertical;
+    private void hideAllEyes()
+    {
+        hiddenEyes = new List<Transform>();
+        visibleEyes = new List<Transform>();
+        Transform body = transform.GetChild(0);
+        int childCount = body.GetChildCount();
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform eye = body.GetChild(i);
+            changeEyeStatus(eye, false);
+            hiddenEyes.Add(eye);
+        }
+
+    }
+
+    private void showAnEye()
+    {
+        if(hiddenEyes.Count > 0)
+        {
+            Transform eye = hiddenEyes[0];
+            hiddenEyes.RemoveAt(0);
+            changeEyeStatus(eye, true);
+            visibleEyes.Add(eye);
+        }
+    }
+
+    private void changeEyeStatus(Transform eye, bool status)
+    {
+        var renderer = eye.gameObject.GetComponent<Renderer>();
+        renderer.enabled = status;
+        var pupil = eye.GetChild(0);
+        renderer = pupil.gameObject.GetComponent<Renderer>();
+        renderer.enabled = status;
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        float movementX = Input.GetAxis("Horizontal");
+        float movementY = Input.GetAxis("Vertical");
  
         if (movementY!= 0 || movementX != 0)
         {
@@ -69,16 +109,13 @@ public class PlayerController : MonoBehaviour {
 
     private void RotatePlayer()
     {
-        float movementX = rotateStick.Horizontal;
-        float movementY = rotateStick.Vertical;
-        double angle;
-
-
-        if(movementY != 0 || movementX != 0)
-        {
-            angle = Mathf.Atan2(movementX, movementY) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, (float)angle);
-        }
+        Vector3 mouse_pos = Input.mousePosition;
+        mouse_pos.z = 5.23f;
+        Vector3 object_pos = Camera.main.WorldToScreenPoint(transform.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        float angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
 
     }
 
