@@ -13,10 +13,10 @@ The game is still in development.
 
 ### Team
 
-- Antal Calina
-- Filipas Flavius
-- Mathe Emese
-- Sulea Calin
+- Antal Calina (KaliAnt)
+- Filipas Flavius (flaviusfilipas)
+- Mathe Emese (eme11)
+- Sulea Calin (AnTiDoTe153)
 
 ### Tasks
 
